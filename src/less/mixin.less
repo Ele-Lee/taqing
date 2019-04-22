@@ -1,0 +1,186 @@
+.page() {
+    // position: fixed;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+._image-size(@url) {
+    width: unit(image-width(@url) / 100, rem);
+    height: unit(image-height(@url) / 100, rem);
+}
+
+.bg-contain (@img, @noSize: false, @suffix: 'png') {
+    // @path: extract(@paths, @pathIndex);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('~@/assets/img/@{img}.@{suffix}');
+    & when (@noSize = false) {
+        ._image-size('../assets/img/@{img}.@{suffix}');
+    }
+}
+
+.bg-cover (@img, @noSize: false, @suffix: 'png') {
+    // @path: extract(@paths, @pathIndex);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('~@/assets/img/@{img}.@{suffix}');
+    & when (@noSize = false) {
+        ._image-size('../assets/img/@{img}.@{suffix}');
+    }
+}
+
+.p-b(@b: 0, @noRight: 0) {
+    position: absolute;
+    left: 0;
+    & when (isunit(@b, '%')) {
+        bottom: @b;
+    }
+    & when not(isunit(@b, '%')) {
+        bottom: unit(@b, rem);
+    }
+    & when (@noRight = 0) {
+        right: 0;
+    }
+}
+
+.p-t(@t: 0, @noRight: false) {
+    position: absolute;
+    left: 0;
+    & when (isunit(@t, '%')) {
+        top: @t;
+    }
+    & when not(isunit(@t, '%')) {
+        top: unit(@t, rem);
+    }
+    & when (@noRight = false) {
+        right: 0;
+    }
+}
+
+.p-c(@l: 0, @t: 0, @r: 0, @b: 0) {
+    position: absolute;
+    bottom: @b;
+    left: @l;
+    right: @r;
+    top: @t;
+    margin: auto;
+}
+
+.test {
+    border: 2px solid goldenrod;
+}
+
+.adapter(@ix, @i6) {
+    @ix();
+    @r: ~'screen and (min-aspect-ratio: 375/667)';
+    @media @r {
+        @i6();
+    }
+}
+
+.mt(@t) {
+    & when (isunit(@t, '%')) {
+        margin-top: @t;
+    }
+    & when not(isunit(@t, '%')) {
+        margin-top: unit(@t, rem);
+    }
+}
+.pt(@t) {
+    & when (isunit(@t, '%')) {
+        padding-top: @v;
+    }
+    & when not(isunit(@v, '%')) {
+        padding-top: unit(@t, rem);
+    }
+}
+.l(@v: 0) {
+    & when (isunit(@v, '%')) {
+        left: @v;
+    }
+    & when not(isunit(@v, '%')) {
+        left: unit(@v, rem);
+    }
+}
+.b(@v: 0) {
+    & when (isunit(@v, '%')) {
+        bottom: @v;
+    }
+    & when not(isunit(@v, '%')) {
+        bottom: unit(@v, rem);
+    }
+}
+.r(@v: 0) {
+    & when (isunit(@v, '%')) {
+        right: @v;
+    }
+    & when not(isunit(@v, '%')) {
+        right: unit(@v, rem);
+    }
+}
+.t(@v: 0) {
+    & when (isunit(@v, '%')) {
+        top: @v;
+    }
+    & when not(isunit(@v, '%')) {
+        top: unit(@v, rem);
+    }
+}
+.t-t(@x: -50%, @y: 0) {
+    transform: translate3d(@x, @y, 0);
+}
+.fs(@v, @lh: false) {
+    font-size: unit(@v, rem);
+    & when (isnumber(@lh)) {
+        line-height: unit(@lh, rem);
+    }
+}
+.b-b {
+    box-sizing: border-box;
+}
+.c-w {
+    color: #fff;
+}
+.c(@c: #fff) {
+    color: @c;
+}
+.b-c(@c: #000) {
+    background-color: @c;
+}
+.df {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wh(@w: auto, @h: auto) {
+    & when (isunit(@w, '%')) {
+        width: @w;
+    }
+
+    & when (isnumber(@w)) and not (isunit(@w, '%')) {
+        width: unit(@w, rem);
+    }
+
+    & when not (isnumber(@w)) and not (isunit(@w, '%')) {
+        width: @w;
+    }
+
+    & when (isunit(@h, '%')) {
+        height: @h;
+    }
+    & when (isnumber(@h)) and not (isunit(@h, '%')) {
+        height: unit(@h, rem);
+    }
+    & when not (isnumber(@h)) and not (isunit(@h, '%')) {
+        height: @h;
+    }
+}
+.btn-box {
+    .tac;
+}

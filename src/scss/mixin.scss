@@ -1,0 +1,47 @@
+// 专门用来全局mixin
+@mixin cover-bg($url, $color: $transparent) {
+    background: url($url);
+    background-color: $color;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@mixin contain-bg($url, $color: $transparent) {
+    background: url($url);
+    background-color: $color;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@mixin no-wrap {
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+// 全屏
+@mixin full-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+// 水平垂直居中
+@mixin center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+// 水平垂直居中
+@mixin center2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
